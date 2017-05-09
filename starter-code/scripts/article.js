@@ -14,13 +14,11 @@ function Article (rawDataObj) {
 }
 
 Article.prototype.toHtml = function() {
-  var $newArticle = $('article.template').clone();
+  var $newArticle = $('article.template').clone().removeClass('template');
   /* TODO: This cloned article still has a class of template.
   However, in our modules.css stylesheet, we gave all elements
   with a class of template a display of none. Let's make
   sure we're not accidentally hiding our cloned article! */
-
-  $newArticle.removeClass('template');
 
   if (!this.publishedOn) $newArticle.addClass('draft');
   $newArticle.data('category', this.category);
